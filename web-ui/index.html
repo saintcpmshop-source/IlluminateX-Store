@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IlluminateStore</title>
     <style>
-        /* Import Gaming Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@400;700&display=swap');
 
-        /* --- MOVING PURPLE BACKGROUND --- */
         body {
             background: linear-gradient(-45deg, #1a0033, #330066, #0d001a, #2a0054);
             background-size: 400% 400%;
@@ -27,10 +25,9 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- FLOATING GOLD PS ICONS --- */
         .floating-icon {
             position: absolute;
-            color: rgba(212, 175, 55, 0.15); /* Transparent Gold */
+            color: rgba(212, 175, 55, 0.15);
             font-size: 8rem;
             font-family: 'Orbitron', sans-serif;
             animation: floatIcons 8s ease-in-out infinite;
@@ -50,7 +47,6 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* --- HEADER --- */
         header {
             text-align: center;
             padding: 50px 20px;
@@ -73,14 +69,13 @@
         }
 
         .subtitle {
-            color: #38bdf8; /* Light Blue */
+            color: #38bdf8;
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
             margin-top: 10px;
             letter-spacing: 2px;
         }
 
-        /* --- STORE GRID --- */
         .store-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -92,7 +87,6 @@
             z-index: 10;
         }
 
-        /* --- APP CARDS --- */
         .app-card {
             background: rgba(30, 0, 60, 0.6);
             backdrop-filter: blur(15px);
@@ -121,22 +115,9 @@
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .app-author { 
-            color: #38bdf8; 
-            font-size: 0.95rem; 
-            margin-bottom: 20px; 
-            font-weight: bold;
-        }
+        .app-author { color: #38bdf8; font-size: 0.95rem; margin-bottom: 20px; font-weight: bold; }
+        .app-desc { color: #ddd; font-size: 1rem; line-height: 1.5; margin-bottom: 30px; flex-grow: 1; }
 
-        .app-desc { 
-            color: #ddd; 
-            font-size: 1rem; 
-            line-height: 1.5; 
-            margin-bottom: 30px; 
-            flex-grow: 1;
-        }
-
-        /* --- METALLIC GOLD BUTTON --- */
         .download-btn {
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             background-size: 200% auto;
@@ -163,22 +144,19 @@
 </head>
 <body>
 
-    <!-- FLOATING GOLD ICONS -->
     <div class="floating-icon icon-x">✕</div>
     <div class="floating-icon icon-o">○</div>
     <div class="floating-icon icon-triangle">△</div>
     <div class="floating-icon icon-square">□</div>
 
-    <!-- HEADER -->
     <header>
         <h1>ILLUMINATE STORE</h1>
         <div class="subtitle">THE ULTIMATE PS3 HOMEBREW LIBRARY</div>
     </header>
 
-    <!-- STORE GRID -->
     <div class="store-container">
         
-        <!-- APP: IlluminateMount -->
+        <!-- IlluminateMount -->
         <div class="app-card">
             <div class="app-title">IlluminateMount</div>
             <div class="app-author">by saintcpmshop-source</div>
@@ -186,95 +164,38 @@
             <a href="https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/IlluminateMount.pkg" class="download-btn">Download</a>
         </div>
 
-        <!-- APP: webMAN MOD -->
+        <!-- IlluminateCleaner -->
+        <div class="app-card">
+            <div class="app-title">IlluminateCleaner</div>
+            <div class="app-author">by saintcpmshop-source</div>
+            <div class="app-desc">System utility. Clears the PS3 web browser cache and automatically fixes broken HDD file permissions.</div>
+            <a href="https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/IlluminateCleaner.pkg" class="download-btn">Download</a>
+        </div>
+
+        <!-- webMAN MOD -->
         <div class="app-card">
             <div class="app-title">webMAN MOD</div>
             <div class="app-author">by Aldo</div>
-            <div class="app-desc">Industry standard for PS3 game management, FTP serving, and fan control. Essential for all CFW users.</div>
-            <a href="https://github.com/aldostools/webMAN-MOD/releases/latest/download/webMAN_MOD_Installer.pkg" class="download-btn">Download</a>
+            <div class="app-desc">Industry standard for PS3 game management, FTP serving, and fan control.</div>
+            <a href="https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/webMAN_MOD.pkg" class="download-btn">Download</a>
         </div>
 
-        <!-- APP: Apollo Save Tool -->
-        <div class="app-card">
-            <div class="app-title">Apollo Save Tool</div>
-            <div class="app-author">by bucanero</div>
-            <div class="app-desc">Manage, back up, and resign your PS3 save files with ease.</div>
-            <a href="https://github.com/bucanero/apollo-ps3/releases/latest/download/apollo-ps3.pkg" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: JellyFin -->
-        <div class="app-card">
-            <div class="app-title">JellyFin PS3</div>
-            <div class="app-author">by jw-notes</div>
-            <div class="app-desc">Stream your movies and TV shows directly from your JellyFin server to your PS3.</div>
-            <a href="https://github.com/jw-notes/JellyFin-PS3/releases/latest/download/JellyFin-PS3.pkg" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: TEE Vanced -->
-        <div class="app-card">
-            <div class="app-title">TEE Vanced</div>
-            <div class="app-author">by TheErsysEnding</div>
-            <div class="app-desc">Watch YouTube on your PS3 with ad-blocking and background play.</div>
-            <a href="https://github.com/TheErsysEnding/TEE-Vanced-PS3/releases/latest/download/TEE-Vanced.pkg" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: GR33N -->
-        <div class="app-card">
-            <div class="app-title">GR33N</div>
-            <div class="app-author">by actuallyniaxx</div>
-            <div class="app-desc">Xbox Cloud Gaming on your PS3. Play Game Pass titles directly.</div>
-            <a href="https://github.com/actuallyniaxx/GR33N/releases/latest/download/gr33n.pkg" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: Salsa64 -->
-        <div class="app-card">
-            <div class="app-title">Salsa64</div>
-            <div class="app-author">by ricowp81</div>
-            <div class="app-desc">A Nintendo 64 emulator for the PlayStation 3.</div>
-            <a href="https://github.com/ricowp81/Salsa64/releases/latest/download/salsa64.pkg" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: PS3 Sweeper+ -->
-        <div class="app-card">
-            <div class="app-title">PS3Sweeper+</div>
-            <div class="app-author">by AcidNT3.1</div>
-            <div class="app-desc">A system utility to clean up your PS3's internal storage and remove junk files.</div>
-            <a href="http://store.brewology.com/ahomebrew.php?brewid=394" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: multiMAN -->
+        <!-- multiMAN -->
         <div class="app-card">
             <div class="app-title">multiMAN</div>
             <div class="app-author">by DeanK</div>
             <div class="app-desc">The classic file manager and game backup manager for PlayStation 3.</div>
-            <a href="http://store.brewology.com/ahomebrew.php?brewid=24" class="download-btn">Download</a>
+            <a href="https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/multiMAN.pkg" class="download-btn">Download</a>
         </div>
 
-        <!-- APP: Movian -->
+        <!-- PKGi -->
         <div class="app-card">
-            <div class="app-title">Movian</div>
-            <div class="app-author">by Andreas Oman</div>
-            <div class="app-desc">A media center for PS3. Stream movies and TV shows directly to your console.</div>
-            <a href="http://store.brewology.com/ahomebrew.php?brewid=196" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: PSN Patch -->
-        <div class="app-card">
-            <div class="app-title">PSN Patch</div>
-            <div class="app-author">by Brewology</div>
-            <div class="app-desc">Spoofs your PSID and IDPS to help prevent PSN bans. Essential for safe online play.</div>
-            <a href="http://store.brewology.com/ahomebrew.php?brewid=244" class="download-btn">Download</a>
-        </div>
-
-        <!-- APP: PS3 DOOM -->
-        <div class="app-card">
-            <div class="app-title">PS3 DOOM</div>
-            <div class="app-author">by xttl</div>
-            <div class="app-desc">The classic DOOM ported to PS3.</div>
-            <a href="http://store.brewology.com/ahomebrew.php?brewid=226" class="download-btn">Download</a>
+            <div class="app-title">PKGi</div>
+            <div class="app-author">by community</div>
+            <div class="app-desc">Download PS3, PS2, and PS1 games directly from Sony's servers.</div>
+            <a href="https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/PKGi.pkg" class="download-btn">Download</a>
         </div>
 
     </div>
-
 </body>
 </html>
