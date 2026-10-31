@@ -1,0 +1,22 @@
+{
+  "apps": [
+    {
+      "name": "IlluminateMount",
+      "author": "saintcpmshop-source",
+      "description": "Standalone ISO Mounter. Mount your games instantly.",
+      "url": "https://github.com/saintcpmshop-source/IlluminateX-PKGs/releases/latest/download/IlluminateMount.pkg"
+    },
+    {
+      "name": "webMAN MOD",
+      "author": "Aldo",
+      "description": "Industry standard for PS3 game management and fan control.",
+      "url": "https://github.com/aldostools/webMAN-MOD/releases/latest/download/webMAN_MOD_Installer.pkg"
+    },
+    {
+      "name": "Apollo Save Tool",
+      "author": "bucanero",
+      "description": "Manage, back up, and resign your PS3 save files.",
+      "url": "https://github.com/bucanero/apollo-ps3/releases/latest/download/apollo-ps3.pkg"
+    }
+  ]
+}
