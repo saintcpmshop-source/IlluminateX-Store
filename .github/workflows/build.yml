@@ -1,0 +1,55 @@
+name: Build IlluminateX Store PKG
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential wget unzip python3 python3-pip
+        pip3 install pycryptodome
+
+    - name: Download Pre-built PS3 Toolchain
+      run: |
+        curl -sL https://github.com/bucanero/ps3toolchain/releases/download/ubuntu-latest-fad3b5fb/ps3dev-ubuntu-latest-2020-08-31.tar.gz | tar xvz -C ./
+        echo "PS3DEV=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
+        echo "PSL1GHT=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
+        echo "${GITHUB_WORKSPACE}/ps3dev/bin" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/ps3dev/ppu/bin" >> $GITHUB_PATH
+
+    - name: Fix Toolchain Issues
+      run: |
+        # Patch Python scripts for Python 3
+        sed -i '1s|.*|#!/usr/bin/env python3|' sfo.py pkg.py
+        sed -i 's/from Struct import Struct/from struct import Struct/g' sfo.py pkg.py
+        sed -i 's/Struct.LE/Struct("<")/g' sfo.py pkg.py
+        sed -i 's/Struct.BE/Struct(">")/g' sfo.py pkg.py
+        
+        # Download missing headers
+        curl -sL https://raw.githubusercontent.com/ps3dev/PSL1GHT/master/ppu/include/sysutil/sysutil.h -o ps3dev/psl1ght/ppu/include/sysutil/sysutil.h
+        curl -sL https://raw.githubusercontent.com/ps3dev/PSL1GHT/master/ppu/include/ppu-types.h -o ps3dev/psl1ght/ppu/include/ppu-types.h
+
+    - name: Build PKG
+      run: |
+        # 1. Generate PARAM.SFO
+        python3 sfo.py assets/PARAM.SFO.txt
+        # 2. Compile and Package
+        make clean
+        make
+
+    - name: Upload Finished PKG
+      uses: actions/upload-artifact@v4
+      with:
+        name: IlluminateX-Store-PKG
+        path: "*.pkg"
+        if-no-files-found: error
