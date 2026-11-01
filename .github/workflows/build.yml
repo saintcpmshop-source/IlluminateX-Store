@@ -21,19 +21,25 @@ jobs:
 
     - name: Download Pre-built PS3 Toolchain
       run: |
-        curl -sL https://github.com/bucanero/ps3toolchain/releases/download/ubuntu-latest-fad3b5fb/ps3dev-ubuntu-latest-2020-08-31.tar.gz | tar xvz -C ./
+        curl -L -o ps3dev.tar.gz https://github.com/bucanero/ps3toolchain/releases/download/ubuntu-latest-fad3b5fb/ps3dev-ubuntu-latest-2020-08-31.tar.gz
+        tar -xzf ps3dev.tar.gz
         echo "PS3DEV=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
         echo "PSL1GHT=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
         echo "${GITHUB_WORKSPACE}/ps3dev/bin" >> $GITHUB_PATH
         echo "${GITHUB_WORKSPACE}/ps3dev/ppu/bin" >> $GITHUB_PATH
 
-    - name: Fix Toolchain Issues
+    - name: Download and Fix Scripts
       run: |
-        # Patch Python scripts for Python 3
+        # Download the official scripts directly from the PSL1GHT repo
+        curl -sL https://raw.githubusercontent.com/ps3dev/PSL1GHT/master/tools/ps3py/sfo.py -o sfo.py
+        curl -sL https://raw.githubusercontent.com/ps3dev/PSL1GHT/master/tools/ps3py/pkg.py -o pkg.py
+        
+        # Patch them for Python 3
         sed -i '1s|.*|#!/usr/bin/env python3|' sfo.py pkg.py
         sed -i 's/from Struct import Struct/from struct import Struct/g' sfo.py pkg.py
         sed -i 's/Struct.LE/Struct("<")/g' sfo.py pkg.py
         sed -i 's/Struct.BE/Struct(">")/g' sfo.py pkg.py
+        chmod +x sfo.py pkg.py
         
         # Download missing headers
         curl -sL https://raw.githubusercontent.com/ps3dev/PSL1GHT/master/ppu/include/sysutil/sysutil.h -o ps3dev/psl1ght/ppu/include/sysutil/sysutil.h
